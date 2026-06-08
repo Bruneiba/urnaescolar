@@ -1,8 +1,0 @@
-body {     
-    color:blue;
-    background-color: black
-    display:center;
-    margin: 70px;
-    container:center;
-    text-align: center;
-    alingn-items: center;
