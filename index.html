@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urna Eletrônica - Eleição de Representante</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Botão de Modo Escuro fixo no topo -->
+    <button class="btn-dark-mode" onclick="alternarModoEscuro()" id="btn-theme">🌙 Modo Escuro</button>
+
+    <!-- TELA INICIAL -->
+    <div id="tela-inicial" class="tela-inicial">
+        <div class="card-inicial">
+            <h2 class="escola-nome">Escola Estadual Professor José</h2>
+            <h1 class="sistema-titulo">Sistema de Votação Escolar</h1>
+            <p class="subtitulo-inicial">Eleição do Representante de Turma</p>
+            <div id="msg-bloqueio-inicial" style="display: none; color: #ff5f53; font-weight: bold; margin-bottom: 20px;">
+                ⚠️ Este dispositivo já registrou um voto e está bloqueado!
+            </div>
+            <button class="btn-iniciar" id="btn-iniciar-voto" onclick="iniciarVotacao()">Iniciar Votação</button>
+        </div>
+    </div>
+
+    <!-- Container da Urna -->
+    <div class="urna-container escondido" id="urna-estrutura">
+        <div class="tela">
+            <div class="header-tela">
+                <span class="titulo-eleicao">ELEIÇÃO DE REPRESENTANTE</span>
+            </div>
+            
+            <div class="corpo-tela">
+                <div class="info-voto">
+                    <div class="cargo">REPRESENTANTE</div>
+                    <div class="numero-display">
+                        <div class="digito" id="digito-1"></div>
+                        <div class="digito" id="digito-2"></div>
+                    </div>
+                    <div class="detalhes-candidato" id="dados-candidato">
+                        <p class="instrucao-inicial">Digite o número do seu candidato.</p>
+                    </div>
+                </div>
+                
+                <div class="foto-candidato" id="foto-container"></div>
+            </div>
+            
+            <div class="rodape-tela">
+                <p>Aperte a tecla:</p>
+<p class="ajuda-voto"><strong style="color: #ffffff; background-color: #ff786e; padding: 2px 6px; border-radius: 4px; font-size: 0.8rem;">CONFIRMA</strong> para gravar o voto</p>
+                <p class="ajuda-voto"><strong style="color: #ff5f53; background-color: #fff0ef; padding: 2px 6px; border-radius: 4px; border: 1px solid #ffdad7; font-size: 0.8rem;">CORRIGE</strong> para reiniciar o voto</p>
+            </div>
+        </div>
+
+        <!-- Teclado da Urna -->
+        <div class="teclado">
+            <div class="marca-urna">JUSTIÇA ESCOLAR</div>
+            
+            <div class="numeros-teclado">
+                <button onclick="pressionarNumero('1')">1</button>
+                <button onclick="pressionarNumero('2')">2</button>
+                <button onclick="pressionarNumero('3')">3</button>
+                <button onclick="pressionarNumero('4')">4</button>
+                <button onclick="pressionarNumero('5')">5</button>
+                <button onclick="pressionarNumero('6')">6</button>
+                <button onclick="pressionarNumero('7')">7</button>
+                <button onclick="pressionarNumero('8')">8</button>
+                <button onclick="pressionarNumero('9')">9</button>
+                <button onclick="pressionarNumero('0')">0</button>
+            </div>
+            
+            <div class="botoes-comando">
+                <button class="btn-branco" onclick="votarBranco()">BRANCO</button>
+                <button class="btn-corrige" onclick="corrigir()">CORRIGE</button>
+                <button class="btn-confirma" onclick="confirmar()">CONFIRMA</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Painel de Apuração com Gráfico -->
+    <div class="painel-apuracao escondido" id="painel-estrutura">
+        <h3>Painel de Apuração e Gráfico de Resultados</h3>
+        
+        <!-- Área dos gráficos nativos em CSS -->
+        <div class="grafico-container" id="grafico-barras">
+            <!-- Gerado via JavaScript -->
+        </div>
+
+        <div id="resultado-votos" style="margin-top: 20px;"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

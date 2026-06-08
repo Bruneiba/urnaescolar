@@ -1,0 +1,209 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body {
+    background-color: #faf8f6;
+    color: #3a3230;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 24px;
+}
+
+/* --- VARIÁVEIS DE MODO ESCURO --- */
+body.dark-theme {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+body.dark-theme .urna-container {
+    background-color: #252322;
+    border-color: #3d3a38;
+}
+body.dark-theme .tela, body.dark-theme .teclado, body.dark-theme .card-inicial, body.dark-theme .painel-apuracao {
+    background-color: #1e1e1e;
+    border-color: #333333;
+    color: #e0e0e0;
+}
+body.dark-theme .digito {
+    background-color: #2d2d2d;
+    color: #ffffff;
+    border-color: #444444;
+}
+body.dark-theme .numeros-teclado button {
+    background: #2a2a2a;
+    color: #e0e0e0;
+    border-color: #444444;
+    box-shadow: 0 2px 0px #111;
+}
+body.dark-theme .btn-branco { background-color: #2d2d2d; color: #fff; border-color: #444!important; }
+
+/* Botão de alternar tema */
+.btn-dark-mode {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 16px;
+    background: #ffffff;
+    border: 1px solid #ebdcd8;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    z-index: 1000;
+}
+body.dark-theme .btn-dark-mode {
+    background: #1e1e1e;
+    color: #fff;
+    border-color: #333;
+}
+
+/* O BLOCO DA URNA */
+.urna-container {
+    background-color: #f2ebe8;
+    border: 1px solid #ebdcd8;
+    padding: 28px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(160, 130, 125, 0.12);
+    display: flex;
+    gap: 28px;
+    max-width: 920px;
+    width: 100%;
+    align-items: stretch;
+}
+
+@media (max-width: 768px) {
+    .urna-container { flex-direction: column; gap: 24px; padding: 18px; }
+}
+
+.tela {
+    background-color: #ffffff;
+    border: 1px solid #e0d0cc;
+    border-radius: 12px;
+    flex: 1.4;
+    min-height: 380px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+.titulo-eleicao {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ff5f53;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #f7ece9;
+    padding-bottom: 12px;
+}
+
+.corpo-tela { display: flex; justify-content: space-between; align-items: flex-start; margin-top: 24px; flex: 1; }
+.cargo { font-size: 1.25rem; font-weight: 600; margin-bottom: 16px; letter-spacing: 0.5px; }
+.numero-display { display: flex; gap: 10px; margin-bottom: 24px; }
+
+.digito {
+    width: 40px;
+    height: 52px;
+    border: 1px solid #e5d5d0;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.8rem;
+    line-height: 50px;
+    font-weight: 500;
+    background: #fdfbfb;
+}
+
+@keyframes piscar {
+    0% { border-color: #ff9e95; box-shadow: 0 0 0 1px #ff9e95; opacity: 0.4; }
+    50% { border-color: #ff5f53; box-shadow: 0 0 0 1px #ff5f53; opacity: 1; }
+    100% { border-color: #ff9e95; box-shadow: 0 0 0 1px #ff9e95; opacity: 0.4; }
+}
+.pisca { animation: piscar 1.2s infinite; }
+.detalhes-candidato { margin-top: 12px; font-size: 1rem; line-height: 1.6; }
+.foto-candidato img { width: 110px; height: 140px; border: 1px solid #f0e6e3; object-fit: cover; border-radius: 8px; }
+.rodape-tela { border-top: 1px solid #f7ece9; padding-top: 16px; font-size: 0.85rem; line-height: 1.5; }
+
+/* Teclado da Urna */
+.teclado {
+    background-color: #ffffff;
+    border: 1px solid #e0d0cc;
+    padding: 28px 20px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 320px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+@media (max-width: 768px) { .teclado { width: 100%; } }
+.marca-urna { color: #bfaea9; margin-bottom: 24px; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; }
+.numeros-teclado { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; justify-items: center; margin-bottom: 28px; width: 100%; }
+
+.numeros-teclado button {
+    background: #fdfaf9;
+    color: #4a3e3b;
+    font-size: 1.3rem;
+    font-weight: 500;
+    width: 62px;
+    height: 52px;
+    border: 1px solid #ebdcd8;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 2px 0px #ebdcd8;
+}
+.numeros-teclado button:active { transform: translateY(2px); box-shadow: 0 0px 0px #ebdcd8; }
+.numeros-teclado button:last-child { grid-column: 2; }
+
+.botoes-comando { display: flex; gap: 8px; width: 100%; }
+.botoes-comando button { flex: 1; padding: 14px 4px; font-size: 0.7rem; font-weight: 700; border: 1px solid transparent; border-radius: 8px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px; }
+.botoes-comando button:active { transform: translateY(2px); }
+
+.btn-branco { background-color: #ffffff; border-color: #e5d5d0 !important; color: #61524e; }
+.btn-corrige { background-color: #fff0ef; color: #ff5f53; border-color: #ffdad7 !important; }
+.btn-confirma { background-color: #ff786e; color: #ffffff; }
+
+/* --- TELA INICIAL --- */
+.tela-inicial { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: linear-gradient(135deg, #fffcfb 0%, #f7ece9 100%); display: flex; align-items: center; justify-content: center; z-index: 999; }
+body.dark-theme .tela-inicial { background: linear-gradient(135deg, #121212 0%, #1a1a1a 100%); }
+.card-inicial { background: white; padding: 50px 40px; border-radius: 24px; box-shadow: 0 20px 50px rgba(235, 180, 175, 0.15); text-align: center; max-width: 480px; width: 90%; border: 1px solid #fbf4f2; }
+.escola-nome { font-size: 0.9rem; color: #bfaea9; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; font-weight: 600; }
+.sistema-titulo { font-size: 2rem; margin-bottom: 12px; font-weight: 700; line-height: 1.2; }
+.subtitulo-inicial { font-size: 1.05rem; margin-bottom: 40px; }
+.btn-iniciar { background-color: #ff786e; color: white; font-size: 1.05rem; font-weight: 600; padding: 16px 48px; border: none; border-radius: 12px; cursor: pointer; box-shadow: 0 10px 25px rgba(255, 120, 110, 0.25); }
+
+/* Painel de Apuração e Gráfico */
+.painel-apuracao { margin-top: 40px; background: white; padding: 28px; border-radius: 16px; max-width: 920px; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.02); border: 1px solid #f0e6e3; }
+.painel-apuracao h3 { margin-bottom: 20px; font-size: 1.2rem; font-weight: 700; text-transform: uppercase; }
+.item-resultado { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 1rem; }
+.painel-apuracao button { padding: 10px 20px; background-color: #f7ece9; color: #61524e; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9rem; }
+body.dark-theme .painel-apuracao button { background-color: #2d2d2d; color: #fff; }
+.btn-limpar { background-color: #fff0ef !important; color: #ff5f53 !important; border: 1px solid #ffdad7 !important; font-size: 0.8rem !important; }
+
+/* GRÁFICO DE BARRAS */
+.grafico-container { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
+.barra-wrapper { display: flex; flex-direction: column; gap: 4px; }
+.barra-info { display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 600; }
+.barra-fundo { background: #f0e6e3; width: 100%; height: 20px; border-radius: 10px; overflow: hidden; }
+body.dark-theme .barra-fundo { background: #333; }
+.barra-preenchimento { background: #ff786e; height: 100%; width: 0%; transition: width 0.5s ease-out; border-radius: 10px; }
+
+.escondido { display: none !important; }
+
+/* RESPONSIVIDADE */
+@media (max-width: 480px) {
+    body { padding: 12px; }
+    .urna-container { padding: 16px; gap: 16px; }
+    .tela { padding: 16px; min-height: 340px; }
+    .digito { width: 32px; height: 44px; font-size: 1.5rem; line-height: 42px; }
+    .foto-candidato img { width: 85px; height: 110px; }
+    .numeros-teclado button { width: 55px; height: 46px; font-size: 1.25rem; }
+    .botoes-comando button { font-size: 0.65rem; padding: 12px 2px; }
+}
